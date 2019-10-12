@@ -1,0 +1,22 @@
+{
+  "name": "anand",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "anand",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "knex": "^0.19.4",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.3",
+    "passport": "^0.4.0",
+    "readline-sync": "^1.4.10",
+    "sqlite3": "^4.1.0"
+  }
+}
