@@ -201,38 +201,6 @@ shoppingcart.delete("/shopping_cart/empty/:cart_id", (req, res) =>{
 
 // Move a product to cart
 // First create a table "cart"
-/*
-shoppingcart.get("/shopping_cart/moveToCart/:item_id", (req, res) =>{
-    knex
-    .select('*')
-    .from('shopping_cart')
-    .where('item_id', req.params.item_id)
-    .then((data) =>{
-        // console.log(data);
-        if (data.length>0){
-            knex('cart')
-            .insert(data[0])
-            .then((result) =>{
-                knex
-                .select('*')
-                .from('shopping_cart')
-                .where('item_id', req.params.item_id)
-                .delete()
-                .then((done) =>{
-                    res.send({"Good": "data move from shopping_cart to cart successfully!"})
-                })
-            }).catch((err) =>{
-                console.log(err);
-            })
-
-        }else{
-            res.send({"Error": "this id is not available in shopping_cart"})
-        }
-    
-    })
-})
-*/
-
 shoppingcart.get("/shopping_cart/moveToCart/:item_id", (req, res) =>{
     knex.schema.createTable('cart', function(table){
         table.increments('item_id').primary();
