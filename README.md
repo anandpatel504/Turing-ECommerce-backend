@@ -25,7 +25,7 @@ Next, you need to make a clone of this repository and get into the repository on
 
 There is a `tshirtshop.sql` file already present in the `database/` folder. You have to import this file to an empty database. For this, make a new database first, and navigate to the database/ directory and then write the following commands:
 Import the schema using `mysql -u <user_name> -p <database_name> < tshirtshop.sql`
-For checking the data, log into your user, by writing `ysql -u <user_name> -p` You would be asked for your password. Now, you can use database with all its tables data.
+For checking the data, log into your user, by writing `mysql -u <user_name> -p` You would be asked for your password. Now, you can use database with all its tables data.
 
 Next, navigate to the folder where, `erver.js`file is located. You can start the local server by writing`node server.js`on the terminal.
 You can always kill your running port by writing,`killall -9 node`on the terminal.
