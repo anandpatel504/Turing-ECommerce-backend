@@ -27,7 +27,7 @@ There is a `tshirtshop.sql` file already present in the `database/` folder. You 
 Import the schema using `mysql -u <user_name> -p <database_name> < tshirtshop.sql`
 For checking the data, log into your user, by writing `mysql -u <user_name> -p` You would be asked for your password. Now, you can use database with all its tables data.
 
-Next, navigate to the folder where, `erver.js`file is located. You can start the local server by writing`node server.js`on the terminal.
+Next, navigate to the folder where, `server.js`file is located. You can start the local server by writing`node server.js`on the terminal.
 You can always kill your running port by writing,`killall -9 node`on the terminal.
 Now, you need to install postman, that helps you to develop APIs and getting responses from it, by writing the following commands on your terminal.
 
