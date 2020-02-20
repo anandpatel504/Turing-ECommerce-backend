@@ -16,52 +16,52 @@ var knex = require('knex')({
         database : 'turingdb'
     }
 })
-// departments
+// route to departments.js
 var department = express.Router();
 app.use("/", department);
 require("./Routs/departments")(department,knex);
 
-// categories
+// route to categories.js
 var category = express.Router();
 app.use("/", category);
 require("./Routs/categories")(category,knex);
 
-// attributes
+// route to attribute.js
 var attribute = express.Router();
 app.use("/", attribute);
 require("./Routs/attribute")(attribute,knex);
 
-// products
+// route to product.js
 var product = express.Router();
 app.use("/", product);
 require("./Routs/product")(product,knex);
 
-// customer
+// route to customer.js
 var customer = express.Router();
 app.use("/", customer);
 require("./Routs/customer")(customer,jwt,knex);
 
-// orders
+// route to orders
 var orders = express.Router();
 app.use("/", orders);
 require("./Routs/oders")(orders,knex);
 
-// Shoppingcart
+// route to Shoppingcart.js
 var shoppingcart = express.Router();
 app.use("/", shoppingcart);
 require("./Routs/shoppingcart")(shoppingcart, knex);
 
-// Tax
+// route to tax.js
 var tax = express.Router();
 app.use("/", tax);
 require("./Routs/tax")(tax, knex)
 
-// Shipping
+// route to Shipping.js
 var shipping = express.Router();
 app.use("/", shipping);
 require("./Routs/shipping")(shipping, knex)
 
-
+// the port listener
 var server = app.listen(3000, function(){
     var host = server.address().address;
     var port = server.address().port;
