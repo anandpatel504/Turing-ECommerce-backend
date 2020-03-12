@@ -1,8 +1,7 @@
 
 module.exports = (shipping, knex) =>{
     // Return shippings regions
-    /*
-    shipping.get("/shipping/regions", (req, res) =>{
+    shipping.get("/shipping/region", (req, res) =>{
         knex
         .select('*')
         .from('shipping_region')
@@ -12,7 +11,7 @@ module.exports = (shipping, knex) =>{
             console.log(err);
         })
     })
-*/
+
     // Return shippings regions
     shipping.get("/shipping/regions/:shipping_region_id", (req, res) =>{
         let shipping_region_id = req.params.shipping_region_id;

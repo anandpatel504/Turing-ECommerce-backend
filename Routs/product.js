@@ -1,6 +1,5 @@
-var jwt = require("jsonwebtoken")
 
-module.exports = (product, knex)=>{
+module.exports = (product, knex, jwt)=>{
 // get all products
 product.get("/product", (req, res) =>{
     knex
@@ -149,16 +148,15 @@ product.get("/product/:product_id/location", (req, res) =>{
 })
 
 // post reviews of a Product
-
 product.post("/product/:product_id/reviews", (req, res) =>{
     var review = req.body.review;
     var rating = req.body.rating;
     var product_id = req.params.product_id;
 
     var token = req.headers.cookie;
-    token = token.split(" ")
-    token = token[token.length-1]
-    token = token.slice(0, -10)
+    // console.log(token);
+    token = token.slice(4)
+    console.log(token);
     jwt.verify(token, "123" , (err, tokendata) =>{
         if (!err){
             knex
@@ -187,6 +185,7 @@ product.post("/product/:product_id/reviews", (req, res) =>{
             console.log({"Error": "Sorry you didn't login, first do login after that you can post review successfully!"})
         }
     })
+    
 })
 
 

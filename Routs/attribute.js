@@ -1,6 +1,6 @@
 
 module.exports = (attribute, knex)=>{
-// get attribute
+// get attribute data
 attribute.get("/attribute", (req, res) =>{
     knex
     .select('*')
@@ -48,7 +48,6 @@ attribute.get("/attribute/inProduct/:product_id", (req, res) =>{
         '*'
     )
     .from('attribute')
-    // .join('attribute_value')
     .join('attribute_value', function(){
         this.on('attribute.attribute_id','attribute_value.attribute_id')
     })

@@ -3,18 +3,19 @@ module.exports = (orders,knex)=>{
 
     function checktoken(req,res,next){
         var token = req.headers.cookie
+        // console.log(token);
         if (token!=undefined){
-            token = token.split(" ")
-            token = token[token.length-1]
-            token = token.slice(0, -10)
+            token = token.slice(4)
+            console.log(token);
             var tokendata = jwt.verify(token, "123",(err,tokendata) =>{
-                // console.log(tokendata);
+                console.log(tokendata)
                 if (!err){
                     knex
                     .select('*')
                     .from('customer')
                     .where('name',tokendata.name)
                     .then((tdata) =>{
+                        // console.log(tdata);
                         if (tdata.length>0){
                             next()
                         }else{
@@ -54,9 +55,9 @@ module.exports = (orders,knex)=>{
 // Create a Order
 orders.post("/orders",checktoken,(req,res)=>{
     var token = req.headers.cookie
-    token = token.split(" ")
-    token = token[token.length-1]
-    token = token.slice(0, -10)
+    // console.log(token)
+    token = token.slice(4)
+    // console.log(token);
     var tokendata=jwt.verify(token,"123")
     knex
     .select("*")
@@ -101,18 +102,14 @@ orders.post("/orders",checktoken,(req,res)=>{
 // Get orders by customer
 orders.get("/orders/inCustomer", checktoken, (req, res) =>{
     var token = req.headers.cookie;
-    token = token.split(" ");
-    token = token[token.length-1];
-    token = token.slice(0, -10);
+    token = token.slice(4);
     jwt.verify(token, "123", (err, tokendata) =>{
         if (!err){
-            // console.log(tokendata);
             knex
             .select('*')
             .from('orders')
             .where('customer_id', tokendata.customer_id)
             .then((data) =>{
-                console.log("hello nav..")
                 console.log(data);
                 res.send(data);
             }).catch((err) =>{
@@ -127,9 +124,7 @@ orders.get("/orders/inCustomer", checktoken, (req, res) =>{
 // Get info about Order
 orders.get("/orders/:order_id", checktoken, (req, res) =>{
     var token = req.headers.cookie;
-    token = token.split(" ")
-    token = token[token.length-1]
-    token = token.slice(0, -10)
+    token = token.slice(4)
     var tokendata = jwt.verify(token, '123')
     var order_id = req.params.order_id
     knex
@@ -167,9 +162,7 @@ orders.get("/orders/:order_id", checktoken, (req, res) =>{
 // Get shortDetails about orders
 orders.get("/oders/shortDetails/:order_id", checktoken, (req, res) =>{
     var token = req.headers.cookie;
-    token = token.split(" ")
-    token = token[token.length-1]
-    token = token.slice(0, -10)
+    token = token.slice(4)
     var tokendata = jwt.verify(token, "123")
     knex
     .select(

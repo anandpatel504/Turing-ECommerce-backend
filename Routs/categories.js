@@ -1,6 +1,6 @@
 
 module.exports = (category, knex)=>{
-// get category
+// get categories data
 category.get("/category", (req, res) =>{
     knex.select ('*').from ('category')
     .then((data) =>{
@@ -11,7 +11,7 @@ category.get("/category", (req, res) =>{
         res.send(err);
     })
 })
-// get category by ID
+// get categories data by ID
 category.get("/category/:category_id", (req, res) =>{
     var category_id = req.params.category_id;
     knex.select ('*').from ('category').where ('category_id',category_id)

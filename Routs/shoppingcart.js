@@ -43,7 +43,6 @@ shoppingcart.post("/shoppingcart/add", (req, res) => {
                 'added_on': new Date() 
             })
             .then(() =>{
-
                 knex
                 .select(
                     'item_id',
@@ -68,11 +67,7 @@ shoppingcart.post("/shoppingcart/add", (req, res) => {
                     }
                     console.log(datas)
                     res.send(data);
-                })
-                .catch(err => console.log(err));
-                
-                
-
+                }).catch(err => console.log(err));
             }).catch((err) => console.log(err))
         }else{
             // quantity increase
@@ -178,7 +173,7 @@ shoppingcart.put("/shopping_cart/update/:item_id", (req, res) =>{
                 i.subtotal = subtotal;
                 result.push(i);
             }
-            console.log("Put data updated!");
+            console.log({"Great": "data updated!"});
             res.send(result);
         }).catch(err => console.log(err));
     }).catch((err) =>{
@@ -207,13 +202,13 @@ shoppingcart.get("/shopping_cart/moveToCart/:item_id", (req, res) =>{
         table.string('cart_id');
         table.integer('product_id');
         table.string('attributes');
-        table.integer('quanitiy');
+        table.integer('quantity');
         table.integer('buy_now');
         table.datetime('added_on');
      }).then(() => {
         console.log("cart table created successfully....")
      }).catch(() => {
-        console.log("this table is already exists!");
+        console.log("cart table is already exists!");
     })
     knex
     .select('*')
@@ -241,6 +236,8 @@ shoppingcart.get("/shopping_cart/moveToCart/:item_id", (req, res) =>{
             res.send({"Error": "this id is not available in shopping_cart"})
         }
     
+    }).catch((err) => {
+        console.log(err);
     })
 })
 
@@ -286,7 +283,7 @@ shoppingcart.get("/shopping_cart/saveForLater/:item_id",(req, res) =>{
     }).then(() =>{
         console.log("later table created successfully....!")
     }).catch((err) =>{
-        console.log("this table is already exists")
+        console.log("later table is already exists")
     })
     knex
     .select('*')
